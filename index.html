@@ -11,7 +11,7 @@
     <div class="header">
       <div class="icons">
         <span>QR</span>
-        <span>Share</span>
+        <span class="share" onclick="showPopup(event)">🔗</span>
       </div>
       <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="Logo" class="logo"/>
       <h1>PAISA KAMAO 💸</h1>
@@ -46,6 +46,14 @@
     </div>
   </div>
 
+  <div id="popupMenu" class="popup hidden">
+  <ul>
+    <li onclick="window.open('https://t.me/yourtelegram', '_blank')">Join Telegram</li>
+    <li onclick="window.open('https://wa.me/yourwhatsapp', '_blank')">Contact WhatsApp</li>
+    <li onclick="window.open('https://whatsapp.com/channel/yourchannel', '_blank')">WhatsApp Channel</li>
+  </ul>
+</div>
+  
   <script src="script.js"></script>
 </body>
 </html>
