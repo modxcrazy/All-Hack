@@ -55,9 +55,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 16px;
+  padding: 14px 16px;
   cursor: pointer;
-  margin: 25px 0;
+  margin: 16px 0;
   box-shadow: 0 0 6px rgba(255, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.4s ease;
   animation: fadeInUp 0.6s ease forwards, redGlow 2s infinite alternate;
@@ -82,10 +82,10 @@ body {
 
 @keyframes redGlow {
   0% {
-    box-shadow: 0 0 4px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 6px rgba(255, 0, 0, 0.3);
   }
   100% {
-    box-shadow: 0 0 8px rgba(255, 0, 0, 0.9);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.9);
   }
 }
 
