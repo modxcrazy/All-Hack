@@ -3,57 +3,331 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Paisa Kamao💸</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Paisa Kamao💸 - Earn Money Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-light: #4895ef;
+      --primary-dark: #3a0ca3;
+      --success: #4cc9f0;
+      --danger: #f72585;
+      --warning: #f8961e;
+      --dark: #1a1a2e;
+      --darker: #16213e;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f5f7fa;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      min-height: 100vh;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px 0 30px;
+      position: relative;
+    }
+
+    .icons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .icons span {
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .icons span:first-child {
+      background-color: #e0e7ff;
+      color: var(--primary-dark);
+    }
+
+    .icons span.share {
+      background-color: #f0f0f0;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      border-radius: 50%;
+      background-color: #f0f7ff;
+      padding: 15px;
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.1);
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      border: 1px solid #eee;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .card-img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin-right: 15px;
+      background-color: #f0f7ff;
+      border-radius: 12px;
+      padding: 10px;
+    }
+
+    .card-text {
+      flex: 1;
+      font-weight: 500;
+      font-size: 16px;
+      color: #2c3e50;
+    }
+
+    .card .share {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0;
+      border-radius: 50%;
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    .popup {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+      z-index: 100;
+      overflow: hidden;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .popup.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .popup ul {
+      list-style: none;
+    }
+
+    .popup li {
+      padding: 15px 25px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .popup li:hover {
+      background-color: #f5f7fa;
+    }
+
+    .popup li:first-child {
+      color: #0088cc;
+    }
+
+    .popup li:nth-child(2) {
+      color: #25D366;
+    }
+
+    .popup li:last-child {
+      color: #075e54;
+    }
+
+    .badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: var(--danger);
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .offer-tag {
+      background-color: #ff4757;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 10px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+      }
+      
+      .logo {
+        width: 70px;
+        height: 70px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      .card {
+        padding: 12px;
+      }
+      
+      .card-img {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
       <div class="icons">
-        <span>QR</span>
-        <span class="share" onclick="showPopup(event)">Contact</span>
+        <span><i class="fas fa-qrcode"></i> QR</span>
+        <span class="share" onclick="showPopup(event)"><i class="fas fa-phone-alt"></i> Contact</span>
       </div>
       <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="Logo" class="logo"/>
-      <h1>PAISA KAMAO 💸</h1>
+      <h1>PAISA KAMAO <span class="offer-tag">NEW</span></h1>
+      <p style="color: var(--gray); font-size: 14px;">Earn money with these verified apps</p>
     </div>
 
     <div class="card-list">
       <div class="card" onclick="goTo(1)">
         <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" class="card-img" />
-        <span class="card-text">250 Rs Free 🔥</span>
-        <span class="share">🔗</span>
+        <span class="card-text">Get ₹250 Signup Bonus <span style="color: var(--success); font-weight: 600;">NEW</span></span>
+        <span class="share"><i class="fas fa-external-link-alt"></i></span>
       </div>
       <div class="card" onclick="goTo(2)">
         <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" class="card-img" />
-        <span class="card-text">300 Rs Free 🔥</span>
-        <span class="share">🔗</span>
+        <span class="card-text">Earn ₹300 Instantly <span style="color: var(--success); font-weight: 600;">HOT</span></span>
+        <span class="share"><i class="fas fa-external-link-alt"></i></span>
       </div>
       <div class="card" onclick="goTo(3)">
         <img src="https://cdn-icons-png.flaticon.com/512/1040/1040250.png" class="card-img" />
-        <span class="card-text">250 Rs Free 🔥</span>
-        <span class="share">🔗</span>
+        <span class="card-text">₹250 Free Cash <span style="color: var(--success); font-weight: 600;">LIMITED</span></span>
+        <span class="share"><i class="fas fa-external-link-alt"></i></span>
       </div>
       <div class="card" onclick="goTo(4)">
         <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" class="card-img" />
-        <span class="card-text">201 Rs Free 🔥</span>
-        <span class="share">🔗</span>
+        <span class="card-text">₹201 Welcome Bonus <span style="color: var(--success); font-weight: 600;">EXCLUSIVE</span></span>
+        <span class="share"><i class="fas fa-external-link-alt"></i></span>
       </div>
       <div class="card" onclick="goTo(5)">
         <img src="https://cdn-icons-png.flaticon.com/512/1998/1998611.png" class="card-img" />
-        <span class="card-text">250 Rs Free 🔥</span>
-        <span class="share">🔗</span>
+        <span class="card-text">Free ₹250 Credit <span style="color: var(--success); font-weight: 600;">TRENDING</span></span>
+        <span class="share"><i class="fas fa-external-link-alt"></i></span>
       </div>
     </div>
   </div>
 
-  <div id="popupMenu" class="popup hidden">
-  <ul>
-    <li onclick="window.open('https://t.me/yourtelegram', '_blank')">Join Telegram</li>
-    <li onclick="window.open('https://wa.me/yourwhatsapp', '_blank')">Contact WhatsApp</li>
-    <li onclick="window.open('https://whatsapp.com/channel/yourchannel', '_blank')">WhatsApp Channel</li>
-  </ul>
-</div>
+  <div id="popupMenu" class="popup">
+    <ul>
+      <li onclick="window.open('https://t.me/yourtelegram', '_blank')"><i class="fab fa-telegram"></i> Join Telegram</li>
+      <li onclick="window.open('https://wa.me/yourwhatsapp', '_blank')"><i class="fab fa-whatsapp"></i> WhatsApp Support</li>
+      <li onclick="window.open('https://whatsapp.com/channel/yourchannel', '_blank')"><i class="fas fa-bullhorn"></i> Updates Channel</li>
+    </ul>
+  </div>
   
-  <script src="script.js"></script>
+  <script>
+    function showPopup(e) {
+      e.stopPropagation();
+      const popup = document.getElementById('popupMenu');
+      popup.classList.toggle('show');
+      
+      // Close popup when clicking outside
+      document.addEventListener('click', function closePopup(evt) {
+        if (!popup.contains(evt.target) && evt.target !== e.target) {
+          popup.classList.remove('show');
+          document.removeEventListener('click', closePopup);
+        }
+      });
+    }
+
+    function goTo(num) {
+      // Replace with your actual links
+      const links = [
+        "#",
+        "#",
+        "#",
+        "#",
+        "#"
+      ];
+      window.open(links[num-1], '_blank');
+    }
+
+    // Close popup when clicking anywhere else
+    document.addEventListener('click', function() {
+      const popup = document.getElementById('popupMenu');
+      popup.classList.remove('show');
+    });
+  </script>
 </body>
 </html>
