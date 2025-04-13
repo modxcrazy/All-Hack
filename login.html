@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+        .login-box {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .login-box h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .login-box p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        .input-group input:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: opacity 0.3s;
+        }
+        .login-btn:hover {
+            opacity: 0.9;
+        }
+        .extra-options {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .extra-options a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .extra-options a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Welcome Back!</h1>
+            <p>Please login to continue</p>
+            
+            <form action="/login" method="POST">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                </div>
+                
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            
+            <div class="extra-options">
+                <a href="#">Forgot Password?</a>
+                <a href="#">Create Account</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
