@@ -8,16 +8,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #4361ee;
-      --primary-light: #4895ef;
-      --primary-dark: #3a0ca3;
-      --success: #4cc9f0;
-      --danger: #f72585;
-      --warning: #f8961e;
-      --dark: #1a1a2e;
-      --darker: #16213e;
-      --light: #f8f9fa;
-      --gray: #6c757d;
+      --primary: #6c5ce7;
+      --primary-light: #a29bfe;
+      --primary-dark: #4834d4;
+      --success: #00b894;
+      --danger: #d63031;
+      --warning: #fdcb6e;
+      --dark: #1e272e;
+      --darker: #2d3436;
+      --light: #f5f6fa;
+      --gray: #636e72;
       --white: #ffffff;
     }
 
@@ -29,8 +29,8 @@
     }
 
     body {
-      background-color: #f5f7fa;
-      color: #333;
+      background-color: var(--darker);
+      color: var(--light);
       min-height: 100vh;
     }
 
@@ -38,8 +38,7 @@
       max-width: 600px;
       margin: 0 auto;
       padding: 20px;
-      background-color: white;
-      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      background-color: var(--dark);
       min-height: 100vh;
     }
 
@@ -61,32 +60,45 @@
       border-radius: 20px;
       font-weight: 500;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
 
     .icons span:first-child {
-      background-color: #e0e7ff;
-      color: var(--primary-dark);
+      background-color: rgba(108, 92, 231, 0.2);
+      color: var(--primary-light);
+      border: 1px solid var(--primary);
     }
 
     .icons span.share {
-      background-color: #f0f0f0;
+      background-color: rgba(45, 52, 54, 0.5);
+      border: 1px solid var(--gray);
+    }
+
+    .icons span:hover {
+      transform: translateY(-2px);
     }
 
     .logo {
-      width: 80px;
-      height: 80px;
+      width: 90px;
+      height: 90px;
       object-fit: contain;
       margin-bottom: 15px;
       border-radius: 50%;
-      background-color: #f0f7ff;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
       padding: 15px;
-      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.1);
+      box-shadow: 0 5px 20px rgba(108, 92, 231, 0.3);
+      border: 3px solid var(--primary-light);
     }
 
     h1 {
       font-size: 28px;
-      color: #2c3e50;
+      color: var(--light);
       margin-bottom: 5px;
+      background: linear-gradient(to right, var(--primary-light), var(--success));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
     }
 
     .card-list {
@@ -98,18 +110,31 @@
     .card {
       display: flex;
       align-items: center;
-      background-color: white;
+      background: linear-gradient(to right, #2d3436, #1e272e);
       border-radius: 12px;
-      padding: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
+      padding: 18px;
+      transition: all 0.3s ease;
       cursor: pointer;
-      border: 1px solid #eee;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--success));
     }
 
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      border-color: rgba(108, 92, 231, 0.3);
     }
 
     .card-img {
@@ -117,16 +142,17 @@
       height: 50px;
       object-fit: contain;
       margin-right: 15px;
-      background-color: #f0f7ff;
+      background-color: rgba(108, 92, 231, 0.1);
       border-radius: 12px;
       padding: 10px;
+      border: 1px solid rgba(108, 92, 231, 0.2);
     }
 
     .card-text {
       flex: 1;
       font-weight: 500;
       font-size: 16px;
-      color: #2c3e50;
+      color: var(--light);
     }
 
     .card .share {
@@ -135,24 +161,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #f0f0f0;
+      background-color: rgba(45, 52, 54, 0.5);
       border-radius: 50%;
       color: var(--gray);
       font-size: 14px;
+      transition: all 0.3s ease;
+      border: 1px solid var(--gray);
+    }
+
+    .card:hover .share {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary-light);
     }
 
     .popup {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: white;
+      background: linear-gradient(to bottom right, #2d3436, #1e272e);
       border-radius: 12px;
-      box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 5px 30px rgba(0,0,0,0.4);
       z-index: 100;
       overflow: hidden;
       transform: translateY(20px);
       opacity: 0;
       transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
     .popup.show {
@@ -167,14 +202,15 @@
     .popup li {
       padding: 15px 25px;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: all 0.2s;
       display: flex;
       align-items: center;
       gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     .popup li:hover {
-      background-color: #f5f7fa;
+      background-color: rgba(255,255,255,0.05);
     }
 
     .popup li:first-child {
@@ -187,33 +223,20 @@
 
     .popup li:last-child {
       color: #075e54;
-    }
-
-    .badge {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      background-color: var(--danger);
-      color: white;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: bold;
+      border-bottom: none;
     }
 
     .offer-tag {
-      background-color: #ff4757;
+      background: linear-gradient(to right, #ff7675, #d63031);
       color: white;
-      padding: 3px 8px;
-      border-radius: 4px;
+      padding: 3px 10px;
+      border-radius: 20px;
       font-size: 12px;
       font-weight: 600;
       margin-left: 10px;
       animation: pulse 1.5s infinite;
+      position: relative;
+      top: -2px;
     }
 
     @keyframes pulse {
@@ -222,14 +245,60 @@
       100% { transform: scale(1); }
     }
 
+    .status-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+
+    .new {
+      background-color: rgba(0, 184, 148, 0.2);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .hot {
+      background-color: rgba(214, 48, 49, 0.2);
+      color: #ff7675;
+      border: 1px solid #ff7675;
+    }
+
+    .limited {
+      background-color: rgba(253, 203, 110, 0.2);
+      color: var(--warning);
+      border: 1px solid var(--warning);
+    }
+
+    .exclusive {
+      background-color: rgba(108, 92, 231, 0.2);
+      color: var(--primary-light);
+      border: 1px solid var(--primary-light);
+    }
+
+    .trending {
+      background-color: rgba(0, 151, 230, 0.2);
+      color: #0984e3;
+      border: 1px solid #0984e3;
+    }
+
+    .subtitle {
+      color: var(--gray);
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
     @media (max-width: 480px) {
       .container {
         padding: 15px;
       }
       
       .logo {
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
       }
       
       h1 {
@@ -237,7 +306,7 @@
       }
       
       .card {
-        padding: 12px;
+        padding: 15px;
       }
       
       .card-img {
@@ -251,38 +320,38 @@
   <div class="container">
     <div class="header">
       <div class="icons">
-        <span><i class="fas fa-qrcode"></i> QR</span>
-        <span class="share" onclick="showPopup(event)"><i class="fas fa-phone-alt"></i> Contact</span>
+        <span><i class="fas fa-qrcode"></i> QR Code</span>
+        <span class="share" onclick="showPopup(event)"><i class="fas fa-ellipsis-h"></i> More</span>
       </div>
       <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="Logo" class="logo"/>
       <h1>PAISA KAMAO <span class="offer-tag">NEW</span></h1>
-      <p style="color: var(--gray); font-size: 14px;">Earn money with these verified apps</p>
+      <p class="subtitle">Earn real money with verified apps</p>
     </div>
 
     <div class="card-list">
       <div class="card" onclick="goTo(1)">
         <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" class="card-img" />
-        <span class="card-text">Get ₹250 Signup Bonus <span style="color: var(--success); font-weight: 600;">NEW</span></span>
+        <span class="card-text">₹250 Signup Bonus <span class="status-badge new">Verified</span></span>
         <span class="share"><i class="fas fa-external-link-alt"></i></span>
       </div>
       <div class="card" onclick="goTo(2)">
         <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" class="card-img" />
-        <span class="card-text">Earn ₹300 Instantly <span style="color: var(--success); font-weight: 600;">HOT</span></span>
+        <span class="card-text">Instant ₹300 Cash <span class="status-badge hot">Hot</span></span>
         <span class="share"><i class="fas fa-external-link-alt"></i></span>
       </div>
       <div class="card" onclick="goTo(3)">
         <img src="https://cdn-icons-png.flaticon.com/512/1040/1040250.png" class="card-img" />
-        <span class="card-text">₹250 Free Cash <span style="color: var(--success); font-weight: 600;">LIMITED</span></span>
+        <span class="card-text">Free ₹250 Wallet <span class="status-badge limited">Limited</span></span>
         <span class="share"><i class="fas fa-external-link-alt"></i></span>
       </div>
       <div class="card" onclick="goTo(4)">
         <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" class="card-img" />
-        <span class="card-text">₹201 Welcome Bonus <span style="color: var(--success); font-weight: 600;">EXCLUSIVE</span></span>
+        <span class="card-text">₹201 Welcome Gift <span class="status-badge exclusive">Exclusive</span></span>
         <span class="share"><i class="fas fa-external-link-alt"></i></span>
       </div>
       <div class="card" onclick="goTo(5)">
         <img src="https://cdn-icons-png.flaticon.com/512/1998/1998611.png" class="card-img" />
-        <span class="card-text">Free ₹250 Credit <span style="color: var(--success); font-weight: 600;">TRENDING</span></span>
+        <span class="card-text">₹250 Free Credit <span class="status-badge trending">Trending</span></span>
         <span class="share"><i class="fas fa-external-link-alt"></i></span>
       </div>
     </div>
@@ -290,9 +359,9 @@
 
   <div id="popupMenu" class="popup">
     <ul>
-      <li onclick="window.open('https://t.me/yourtelegram', '_blank')"><i class="fab fa-telegram"></i> Join Telegram</li>
+      <li onclick="window.open('https://t.me/yourtelegram', '_blank')"><i class="fab fa-telegram"></i> Telegram Group</li>
       <li onclick="window.open('https://wa.me/yourwhatsapp', '_blank')"><i class="fab fa-whatsapp"></i> WhatsApp Support</li>
-      <li onclick="window.open('https://whatsapp.com/channel/yourchannel', '_blank')"><i class="fas fa-bullhorn"></i> Updates Channel</li>
+      <li onclick="window.open('https://whatsapp.com/channel/yourchannel', '_blank')"><i class="fas fa-newspaper"></i> News Channel</li>
     </ul>
   </div>
   
